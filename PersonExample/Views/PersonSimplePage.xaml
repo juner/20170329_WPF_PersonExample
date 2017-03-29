@@ -1,0 +1,28 @@
+﻿<Window x:Class="PersonExample.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonExample"
+        xmlns:m="clr-namespace:PersonExample.Models"
+        xmlns:vm="clr-namespace:PersonExample.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <vm:PersonViewModel FirstName="TadaFumi" LastName="Iriya" Age="17"/>
+    </Window.DataContext>
+    <StackPanel>
+        <TextBlock Text="FirstName:"/>
+        <TextBox Text="{Binding FirstName}"/>
+        <TextBlock Text="LastName:"/>
+        <TextBox Text="{Binding LastName}"/>
+        <TextBlock Text="FullName:"/>
+        <TextBox Text="{Binding FullName,ValidatesOnExceptions=True}"/>
+        <TextBlock Text="Age:"/>
+        <TextBox Text="{Binding Age}"/>
+        <StackPanel Orientation="Horizontal">
+            <RepeatButton Interval="1" Command="{Binding IncrementAge}">Age++</RepeatButton>
+            <RepeatButton Interval="1"  Command="{Binding DecrementAge}" >Age--</RepeatButton>
+        </StackPanel>
+    </StackPanel>
+</Window>
